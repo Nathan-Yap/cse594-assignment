@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Study — Task</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --surface2: #1c2030;
+    --border: #252a35;
+    --accent: #e8f04a;
+    --accent2: #4af0c8;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --correct: #4af0c8;
+    --incorrect: #f87171;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(232,240,74,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,240,74,.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem;
+  }
+  .header-left { display: flex; align-items: center; gap: 1rem; }
+  .logo {
+    font-size: .85rem; font-weight: 700;
+    letter-spacing: .05em;
+  }
+  .progress-wrap {
+    display: flex; align-items: center; gap: .75rem;
+    flex: 1; max-width: 320px;
+  }
+  .progress-bar {
+    flex: 1; height: 4px;
+    background: var(--border);
+    border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 2px;
+    transition: width .4s ease;
+  }
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .75rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .timer-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: .8rem;
+    color: var(--accent);
+    background: rgba(232,240,74,.1);
+    border: 1px solid rgba(232,240,74,.25);
+    padding: .25rem .7rem;
+    border-radius: 4px;
+  }
+
+  /* ── Main layout ─────────────────────────────────────────── */
+  main {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  /* ── Image panel ─────────────────────────────────────────── */
+  .image-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    position: sticky; top: 72px;
+  }
+  .image-header {
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .image-header span {
+    font-size: .75rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+  }
+  .clip-badge {
+    font-size: .65rem;
+    font-family: 'DM Mono', monospace;
+    background: rgba(74,240,200,.1);
+    border: 1px solid rgba(74,240,200,.3);
+    color: var(--accent2);
+    padding: .2rem .6rem;
+    border-radius: 3px;
+    display: none;
+  }
+  .image-wrap {
+    width: 100%; aspect-ratio: 4/3;
+    background: #0a0c10;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .image-wrap img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    transition: opacity .3s;
+  }
+  .image-wrap.loading img { opacity: 0; }
+
+  /* ── Description panel ───────────────────────────────────── */
+  .desc-panel {}
+  .desc-panel h2 {
+    font-size: .75rem;
+    letter-spacing: .1em;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    margin-bottom: .75rem;
+  }
+  .options-list { display: flex; flex-direction: column; gap: .5rem; }
+
+  .option {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1rem 1rem 1.25rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, transform .1s;
+    display: flex; align-items: center; gap: .75rem;
+    user-select: none;
+    position: relative;
+  }
+  .option:hover {
+    border-color: rgba(232,240,74,.4);
+    background: var(--surface2);
+  }
+  .option.selected {
+    border-color: var(--accent);
+    background: rgba(232,240,74,.06);
+  }
+  .option.not-listed {
+    border-style: dashed;
+  }
+  .option.not-listed.selected {
+    border-color: var(--accent2);
+    background: rgba(74,240,200,.06);
+  }
+  .option-radio {
+    width: 16px; height: 16px; min-width: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .15s;
+  }
+  .option.selected .option-radio { border-color: var(--accent); }
+  .option.not-listed.selected .option-radio { border-color: var(--accent2); }
+  .option-radio-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: scale(0);
+    transition: transform .15s;
+  }
+  .option.not-listed .option-radio-dot { background: var(--accent2); }
+  .option.selected .option-radio-dot { transform: scale(1); }
+  .option-text {
+    font-size: .9rem;
+    line-height: 1.5;
+    flex: 1;
+  }
+  .clip-score {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    color: var(--accent2);
+    opacity: .7;
+    white-space: nowrap;
+  }
+
+  /* ── Submit button ────────────────────────────────────────── */
+  .submit-area {
+    margin-top: 1rem;
+    display: flex; flex-direction: column; gap: .5rem;
+  }
+  .btn {
+    background: var(--accent);
+    color: #0d0f14;
+    border: none;
+    padding: .85rem 1.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity .15s;
+    width: 100%;
+  }
+  .btn:disabled { opacity: .3; cursor: not-allowed; }
+  .btn:not(:disabled):hover { opacity: .9; }
+
+  /* ── Feedback toast ───────────────────────────────────────── */
+  .feedback-toast {
+    position: fixed;
+    bottom: 1.5rem; right: 1.5rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .75rem 1.25rem;
+    font-size: .85rem;
+    display: flex; align-items: center; gap: .5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .3s, transform .3s;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .feedback-toast.show { opacity: 1; transform: translateY(0); }
+  .feedback-toast.correct { border-color: var(--correct); color: var(--correct); }
+  .feedback-toast.incorrect { border-color: var(--incorrect); color: var(--incorrect); }
+
+  /* ── Loading overlay ─────────────────────────────────────── */
+  #loading-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem;
+    transition: opacity .3s;
+  }
+  #loading-overlay.hidden { opacity: 0; pointer-events: none; }
+  .spinner-lg {
+    width: 40px; height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text { color: var(--muted); font-size: .9rem; font-family: 'DM Mono', monospace; }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- Loading overlay -->
+<div id="loading-overlay">
+  <div class="spinner-lg"></div>
+  <div class="loading-text">Loading task…</div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-left">
+    <div class="logo">Vehicle Study</div>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="progress-label" id="progress-label">0 / 0</span>
+    </div>
+  </div>
+  <div class="timer-badge" id="timer-badge">0:00</div>
+</header>
+
+<!-- Main content -->
+<main>
+  <!-- Left: image -->
+  <div class="image-panel">
+    <div class="image-header">
+      <span id="task-label">Task 1</span>
+      <span class="clip-badge" id="clip-badge">AI-ranked</span>
+    </div>
+    <div class="image-wrap" id="image-wrap">
+      <img id="vehicle-img" src="" alt="Vehicle image">
+    </div>
+  </div>
+
+  <!-- Right: descriptions -->
+  <div class="desc-panel">
+    <h2>Which description best matches this vehicle?</h2>
+    <div class="options-list" id="options-list">
+      <!-- Populated by JS -->
+    </div>
+    <div class="submit-area">
+      <button class="btn" id="submit-btn" disabled onclick="submitAnswer()">
+        Submit &amp; Continue →
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- Feedback toast -->
+<div class="feedback-toast" id="feedback-toast"></div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const SESSION_ID = params.get('code') || sessionStorage.getItem('survey_code');
+if (!SESSION_ID) location.href = '/';
+
+let currentTask = null;
+let selectedDescId = null;
+let selectedNotListed = false;
+let taskOrder = 1;
+let totalTasks = parseInt(sessionStorage.getItem('total_tasks') || '10');
+let timerInterval = null;
+let taskStartMs = null;
+
+// ── Timer ─────────────────────────────────────────────────────────────────────
+function startTimer() {
+  taskStartMs = Date.now();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - taskStartMs) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
+    document.getElementById('timer-badge').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  }, 500);
+}
+
+// ── Load task ─────────────────────────────────────────────────────────────────
+async function loadTask(order) {
+  document.getElementById('loading-overlay').classList.remove('hidden');
+  selectedDescId = null;
+  selectedNotListed = false;
+  document.getElementById('submit-btn').disabled = true;
+
+  try {
+    const res = await fetch(`/api/sessions/${SESSION_ID}/task/${order}`);
+    if (!res.ok) {
+      const err = await res.json();
+      alert(err.detail || 'Error loading task');
+      return;
+    }
+    currentTask = await res.json();
+    totalTasks = currentTask.total;
+
+    renderTask(currentTask);
+    startTimer();
+
+    // Update progress
+    const pct = ((order - 1) / totalTasks) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = `${order} / ${totalTasks}`;
+    document.getElementById('task-label').textContent = `Task ${order}`;
+
+    // CLIP badge
+    if (currentTask.clip_ranked) {
+      document.getElementById('clip-badge').style.display = 'inline';
+    }
+
+    document.getElementById('loading-overlay').classList.add('hidden');
+  } catch (e) {
+    alert('Network error: ' + e.message);
+  }
+}
+
+// ── Render task ───────────────────────────────────────────────────────────────
+function renderTask(task) {
+  // Image
+  const img = document.getElementById('vehicle-img');
+  const wrap = document.getElementById('image-wrap');
+  wrap.classList.add('loading');
+  img.onload = () => wrap.classList.remove('loading');
+  img.src = task.image_url + '?t=' + Date.now();
+
+  // Descriptions
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+
+  task.descriptions.forEach(desc => {
+    const el = document.createElement('div');
+    el.className = 'option';
+    el.dataset.id = desc.id;
+    el.innerHTML = `
+      <div class="option-radio"><div class="option-radio-dot"></div></div>
+      <span class="option-text">${escHtml(desc.text)}</span>
+      ${desc.clip_score ? `<span class="clip-score">${(desc.clip_score * 100).toFixed(1)}%</span>` : ''}
+    `;
+    el.addEventListener('click', () => selectOption(desc.id, false, el));
+    list.appendChild(el);
+  });
+
+  // "Not listed" option
+  const notEl = document.createElement('div');
+  notEl.className = 'option not-listed';
+  notEl.dataset.notListed = '1';
+  notEl.innerHTML = `
+    <div class="option-radio"><div class="option-radio-dot"></div></div>
+    <span class="option-text" style="color:var(--muted);font-style:italic;">None of these — vehicle not listed</span>
+  `;
+  notEl.addEventListener('click', () => selectOption(null, true, notEl));
+  list.appendChild(notEl);
+}
+
+function selectOption(descId, notListed, el) {
+  // Deselect all
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDescId = descId;
+  selectedNotListed = notListed;
+  document.getElementById('submit-btn').disabled = false;
+}
+
+// ── Submit ────────────────────────────────────────────────────────────────────
+async function submitAnswer() {
+  clearInterval(timerInterval);
+  document.getElementById('submit-btn').disabled = true;
+
+  const body = {
+    session_id: SESSION_ID,
+    task_order: taskOrder,
+    selected_desc_id: selectedDescId,
+    not_listed: selectedNotListed,
+  };
+
+  try {
+    const res = await fetch('/api/sessions/submit_answer', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    if (!res.ok) { alert(data.detail || 'Error'); return; }
+
+    // Show feedback toast
+    showToast(data.is_correct);
+
+    if (data.all_done) {
+      // All tasks complete — go to feedback page
+      setTimeout(() => {
+        window.location.href = `/complete?code=${SESSION_ID}`;
+      }, 1000);
+    } else {
+      taskOrder++;
+      setTimeout(() => loadTask(taskOrder), 900);
+    }
+  } catch (e) {
+    alert('Network error: ' + e.message);
+    document.getElementById('submit-btn').disabled = false;
+  }
+}
+
+function showToast(isCorrect) {
+  const t = document.getElementById('feedback-toast');
+  if (isCorrect === 1) {
+    t.textContent = '✓ Correct!';
+    t.className = 'feedback-toast correct show';
+  } else if (isCorrect === 0) {
+    t.textContent = '✗ Incorrect';
+    t.className = 'feedback-toast incorrect show';
+  } else {
+    t.textContent = '→ Answer recorded';
+    t.className = 'feedback-toast show';
+  }
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+function escHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadTask(taskOrder);
+</script>
+</body>
+</html>

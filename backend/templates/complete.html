@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Complete — Feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --surface2: #1c2030;
+    --border: #252a35;
+    --accent: #e8f04a;
+    --accent2: #4af0c8;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(74,240,200,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,240,200,.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .container {
+    position: relative; z-index: 1;
+    max-width: 600px; width: 90%;
+    padding: 2rem 0;
+  }
+
+  /* Summary card */
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .summary-card h2 {
+    font-size: .75rem; letter-spacing: .1em;
+    color: var(--accent2); font-family: 'DM Mono', monospace;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .stat {
+    text-align: center;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem .5rem;
+  }
+  .stat-value {
+    font-size: 1.8rem; font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; color: var(--muted);
+    letter-spacing: .08em; margin-top: .25rem;
+  }
+
+  /* Feedback form */
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .form-card h2 {
+    font-size: .75rem; letter-spacing: .1em;
+    color: var(--accent); font-family: 'DM Mono', monospace;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .field { margin-bottom: 1.25rem; }
+  .field label {
+    display: block;
+    font-size: .85rem; font-weight: 600;
+    margin-bottom: .5rem;
+  }
+  .field p {
+    font-size: .8rem; color: var(--muted); margin-bottom: .5rem;
+  }
+  .radio-group {
+    display: flex; gap: .5rem; flex-wrap: wrap;
+  }
+  .radio-opt {
+    flex: 1; min-width: 80px;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: .75rem .5rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: .85rem;
+    transition: border-color .15s, background .15s;
+    user-select: none;
+  }
+  .radio-opt:hover { border-color: rgba(232,240,74,.4); }
+  .radio-opt.selected {
+    border-color: var(--accent);
+    background: rgba(232,240,74,.07);
+    color: var(--accent);
+  }
+  textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: .9rem;
+    padding: .75rem 1rem;
+    resize: vertical;
+    min-height: 90px;
+    outline: none;
+    transition: border-color .15s;
+  }
+  textarea:focus { border-color: rgba(232,240,74,.5); }
+  textarea::placeholder { color: var(--muted); }
+
+  .btn {
+    display: block; width: 100%;
+    background: var(--accent);
+    color: #0d0f14; border: none;
+    padding: .9rem 1.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    border-radius: 6px; cursor: pointer;
+    transition: opacity .15s;
+  }
+  .btn:disabled { opacity: .35; cursor: not-allowed; }
+  .btn:not(:disabled):hover { opacity: .9; }
+
+  /* Completion state */
+  #done-state { display: none; text-align: center; padding: 2rem 0; }
+  #done-state h1 { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
+  #done-state h1 span { color: var(--accent2); }
+  #done-state p { color: var(--muted); margin-bottom: 1.5rem; }
+  .code-final {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent);
+    letter-spacing: .06em;
+    word-break: break-all;
+    margin-bottom: .75rem;
+  }
+  .copy-btn {
+    background: rgba(232,240,74,.1);
+    border: 1px solid rgba(232,240,74,.3);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: .75rem;
+    padding: .4rem 1rem; border-radius: 4px;
+    cursor: pointer; transition: background .15s;
+  }
+  .copy-btn:hover { background: rgba(232,240,74,.2); }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="container">
+
+  <!-- Summary -->
+  <div class="summary-card" id="summary-card">
+    <h2>Your Results</h2>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-value" id="stat-accuracy">—</div><div class="stat-label">Accuracy</div></div>
+      <div class="stat"><div class="stat-value" id="stat-correct">—</div><div class="stat-label">Correct</div></div>
+      <div class="stat"><div class="stat-value" id="stat-avg-time">—</div><div class="stat-label">Avg. Time</div></div>
+    </div>
+  </div>
+
+  <!-- Feedback form -->
+  <div class="form-card" id="feedback-form">
+    <h2>Post-Study Feedback</h2>
+
+    <div class="field">
+      <label>Did the AI-ranked ordering of descriptions help you?</label>
+      <p>Descriptions may have been reordered based on AI similarity scoring to the image.</p>
+      <div class="radio-group" id="ai-helped-group">
+        <div class="radio-opt" data-val="yes" onclick="selectRadio('ai-helped-group',this)">Yes, it helped</div>
+        <div class="radio-opt" data-val="neutral" onclick="selectRadio('ai-helped-group',this)">Neutral</div>
+        <div class="radio-opt" data-val="no" onclick="selectRadio('ai-helped-group',this)">No / Not sure</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>How did the AI ranking affect your decision-making?</label>
+      <textarea id="ai-comments" placeholder="e.g. 'I always read the top option first' or 'I ignored the ordering entirely'…"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Any other feedback about the study?</label>
+      <textarea id="feedback-text" placeholder="Difficulty, clarity of images, suggestions…"></textarea>
+    </div>
+
+    <button class="btn" id="submit-fb-btn" onclick="submitFeedback()">
+      Submit Feedback &amp; Get Final Code
+    </button>
+  </div>
+
+  <!-- Done state -->
+  <div id="done-state">
+    <h1>All <span>Done!</span></h1>
+    <p>Please enter this code in the MTurk HIT to complete your submission.</p>
+    <div class="code-final" id="final-code-display">—</div>
+    <button class="copy-btn" onclick="copyFinal()">Copy code</button>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const SESSION_ID = params.get('code') || sessionStorage.getItem('survey_code');
+if (!SESSION_ID) location.href = '/';
+
+let aiHelped = null;
+
+// ── Load summary ──────────────────────────────────────────────────────────────
+async function loadSummary() {
+  try {
+    const res = await fetch(`/api/sessions/${SESSION_ID}/summary`);
+    if (!res.ok) return;
+    const data = await res.json();
+    document.getElementById('stat-accuracy').textContent = data.accuracy_pct + '%';
+    document.getElementById('stat-correct').textContent = `${data.correct}/${data.total_tasks}`;
+    const avg = data.avg_duration_ms;
+    document.getElementById('stat-avg-time').textContent = avg
+      ? (avg / 1000).toFixed(1) + 's'
+      : '—';
+  } catch (e) { /* non-critical */ }
+}
+
+// ── Radio helper ──────────────────────────────────────────────────────────────
+function selectRadio(groupId, el) {
+  document.querySelectorAll(`#${groupId} .radio-opt`).forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  if (groupId === 'ai-helped-group') aiHelped = el.dataset.val;
+}
+
+// ── Submit feedback ───────────────────────────────────────────────────────────
+async function submitFeedback() {
+  const btn = document.getElementById('submit-fb-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  const body = {
+    session_id: SESSION_ID,
+    feedback_text: document.getElementById('feedback-text').value.trim() || null,
+    ai_helped: aiHelped,
+    ai_comments: document.getElementById('ai-comments').value.trim() || null,
+  };
+
+  try {
+    const res = await fetch('/api/sessions/feedback', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) throw new Error('Server error');
+
+    // Show final code
+    document.getElementById('feedback-form').style.display = 'none';
+    document.getElementById('final-code-display').textContent = SESSION_ID;
+    document.getElementById('done-state').style.display = 'block';
+    sessionStorage.clear();
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Submit Feedback & Get Final Code';
+    alert('Error: ' + e.message);
+  }
+}
+
+function copyFinal() {
+  navigator.clipboard.writeText(SESSION_ID).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy code', 2000);
+  });
+}
+
+loadSummary();
+</script>
+</body>
+</html>

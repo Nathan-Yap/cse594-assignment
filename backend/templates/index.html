@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Description Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --border: #252a35;
+    --accent: #e8f04a;
+    --accent2: #4af0c8;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --code-bg: #1e2330;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(232,240,74,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,240,74,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .glow {
+    position: fixed; pointer-events: none; z-index: 0;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,240,200,.07) 0%, transparent 70%);
+    top: -100px; right: -100px;
+  }
+  .container {
+    position: relative; z-index: 1;
+    max-width: 560px; width: 90%;
+    padding: 2rem;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(232,240,74,.12);
+    border: 1px solid rgba(232,240,74,.3);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    padding: .3rem .8rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -.02em;
+  }
+  h1 span { color: var(--accent); }
+  .desc {
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .steps {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .steps h2 {
+    font-size: .8rem;
+    letter-spacing: .1em;
+    color: var(--accent2);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .step {
+    display: flex; align-items: flex-start; gap: .75rem;
+    margin-bottom: .75rem; font-size: .9rem; color: var(--text);
+  }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    background: rgba(232,240,74,.12);
+    color: var(--accent);
+    width: 22px; height: 22px; min-width: 22px;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: .75rem; font-weight: 500;
+  }
+  .code-box {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    display: none;
+  }
+  .code-box label {
+    font-size: .7rem;
+    letter-spacing: .1em;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .5rem;
+  }
+  .code-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.05rem;
+    color: var(--accent);
+    letter-spacing: .06em;
+    word-break: break-all;
+  }
+  .copy-btn {
+    margin-top: .75rem;
+    background: rgba(232,240,74,.1);
+    border: 1px solid rgba(232,240,74,.3);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: .75rem;
+    padding: .4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .copy-btn:hover { background: rgba(232,240,74,.2); }
+  .btn {
+    display: block; width: 100%;
+    background: var(--accent);
+    color: #0d0f14;
+    border: none;
+    padding: .9rem 1.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity .15s, transform .1s;
+  }
+  .btn:hover { opacity: .9; }
+  .btn:active { transform: scale(.98); }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .spinner {
+    display: none; width: 20px; height: 20px;
+    border: 2px solid rgba(13,15,20,.4);
+    border-top-color: #0d0f14;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    margin: 0 auto;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #error-msg {
+    display: none;
+    color: #f87171;
+    font-size: .85rem;
+    margin-top: 1rem;
+    padding: .75rem 1rem;
+    background: rgba(248,113,113,.08);
+    border: 1px solid rgba(248,113,113,.2);
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="glow"></div>
+
+<div class="container">
+  <div class="badge">MTurk Research Study</div>
+  <h1>Vehicle Description <span>Labelling</span> Study</h1>
+  <p class="desc">
+    You will be shown images of vehicles and asked to identify which description best matches each image.
+    The study takes approximately 5–10 minutes.
+  </p>
+
+  <div class="steps">
+    <h2>Instructions</h2>
+    <div class="step"><div class="step-num">1</div><span>Click <strong>Begin Study</strong> to receive your unique survey code.</span></div>
+    <div class="step"><div class="step-num">2</div><span>Copy and paste your survey code back into the MTurk HIT field before proceeding.</span></div>
+    <div class="step"><div class="step-num">3</div><span>You will be shown <strong>10 vehicle images</strong>, each with several candidate descriptions.</span></div>
+    <div class="step"><div class="step-num">4</div><span>Select the description that best matches the vehicle, or choose "Not listed" if none apply.</span></div>
+    <div class="step"><div class="step-num">5</div><span>Complete a short feedback form at the end.</span></div>
+  </div>
+
+  <!-- Survey code display -->
+  <div class="code-box" id="code-box">
+    <label>Your Survey Code — copy this into MTurk</label>
+    <div class="code-value" id="survey-code-display">—</div>
+    <button class="copy-btn" onclick="copyCode()">Copy to clipboard</button>
+  </div>
+
+  <button class="btn" id="begin-btn" onclick="beginStudy()">
+    <span id="btn-text">Begin Study</span>
+    <div class="spinner" id="spinner"></div>
+  </button>
+  <div id="error-msg"></div>
+</div>
+
+<script>
+let surveyCode = null;
+
+async function beginStudy() {
+  const btn = document.getElementById('begin-btn');
+  btn.disabled = true;
+  document.getElementById('btn-text').style.display = 'none';
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('error-msg').style.display = 'none';
+
+  try {
+    const res = await fetch('/api/sessions/create', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({})
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || 'Server error');
+    }
+    const data = await res.json();
+    surveyCode = data.survey_code;
+
+    // Show code
+    document.getElementById('survey-code-display').textContent = surveyCode;
+    document.getElementById('code-box').style.display = 'block';
+
+    // Store in sessionStorage for the survey page
+    sessionStorage.setItem('survey_code', surveyCode);
+    sessionStorage.setItem('total_tasks', data.total_tasks);
+
+    // Change button to proceed
+    document.getElementById('btn-text').textContent = 'Proceed to Survey →';
+    document.getElementById('btn-text').style.display = 'inline';
+    document.getElementById('spinner').style.display = 'none';
+    btn.disabled = false;
+    btn.onclick = () => window.location.href = `/survey?code=${surveyCode}`;
+
+  } catch (e) {
+    document.getElementById('error-msg').textContent = e.message;
+    document.getElementById('error-msg').style.display = 'block';
+    document.getElementById('btn-text').style.display = 'inline';
+    document.getElementById('spinner').style.display = 'none';
+    btn.disabled = false;
+  }
+}
+
+function copyCode() {
+  navigator.clipboard.writeText(surveyCode).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy to clipboard', 2000);
+  });
+}
+</script>
+</body>
+</html>

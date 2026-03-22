@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  app:
+    build: ./backend
+    container_name: vehicle-labelling
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist database & uploaded images between restarts
+      - ./data/db:/app/data
+      - ./data/images:/app/static/images
+    environment:
+      - TASKS_PER_SESSION=10
+      - DB_PATH=/app/data/labelling.db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Optional: nginx reverse proxy (uncomment for production)
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx-proxy
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf
+  #   depends_on:
+  #     - app

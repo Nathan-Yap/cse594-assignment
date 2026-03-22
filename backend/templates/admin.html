@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Vehicle Labelling Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --surface2: #1c2030;
+    --border: #252a35;
+    --accent: #e8f04a;
+    --accent2: #4af0c8;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --red: #f87171;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(232,240,74,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,240,74,.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 800; font-size: .95rem; }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: .25rem; }
+  .nav-btn {
+    background: transparent; border: none;
+    color: var(--muted); font-family: 'DM Mono', monospace;
+    font-size: .75rem; padding: .4rem .9rem; border-radius: 4px;
+    cursor: pointer; transition: color .15s, background .15s;
+  }
+  .nav-btn.active, .nav-btn:hover {
+    color: var(--text); background: var(--surface);
+  }
+  main {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 {
+    font-size: .75rem; letter-spacing: .1em;
+    color: var(--accent); font-family: 'DM Mono', monospace;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .75rem; margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1rem; text-align: center;
+  }
+  .stat-card .val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+  .stat-card .lbl {
+    font-size: .65rem; color: var(--muted);
+    font-family: 'DM Mono', monospace; margin-top: .25rem;
+  }
+
+  /* Config */
+  .config-row {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.25rem;
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.5rem; flex-wrap: wrap;
+  }
+  .config-row label {
+    font-size: .85rem; font-weight: 600; white-space: nowrap;
+  }
+  .config-row input[type=number] {
+    background: var(--surface2); border: 1.5px solid var(--border);
+    color: var(--text); font-family: 'DM Mono', monospace;
+    font-size: .9rem; padding: .4rem .75rem; border-radius: 4px;
+    width: 80px; outline: none;
+  }
+  .config-row input:focus { border-color: rgba(232,240,74,.5); }
+
+  /* Buttons */
+  .btn {
+    background: var(--accent); color: #0d0f14; border: none;
+    padding: .6rem 1.2rem; font-family: 'Syne', sans-serif;
+    font-size: .85rem; font-weight: 700; border-radius: 5px;
+    cursor: pointer; transition: opacity .15s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn.secondary {
+    background: var(--surface2); color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.danger { background: var(--red); color: #fff; }
+
+  /* Upload zone */
+  .upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 8px; padding: 2rem; text-align: center;
+    color: var(--muted); font-size: .9rem;
+    transition: border-color .15s; cursor: pointer; margin-bottom: 1rem;
+  }
+  .upload-zone:hover, .upload-zone.drag { border-color: var(--accent); color: var(--text); }
+  .upload-zone input { display: none; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: .82rem;
+  }
+  th {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: .6rem .75rem; text-align: left;
+    font-family: 'DM Mono', monospace; font-size: .65rem;
+    letter-spacing: .08em; color: var(--muted); text-transform: uppercase;
+  }
+  td {
+    padding: .6rem .75rem; border-bottom: 1px solid rgba(37,42,53,.7);
+    max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  tr:hover td { background: var(--surface); }
+  .pill {
+    font-family: 'DM Mono', monospace; font-size: .65rem;
+    padding: .2rem .5rem; border-radius: 3px;
+  }
+  .pill.green { background: rgba(74,240,200,.12); color: var(--accent2); }
+  .pill.yellow { background: rgba(232,240,74,.12); color: var(--accent); }
+  .pill.red { background: rgba(248,113,113,.12); color: var(--red); }
+
+  /* CLIP */
+  .clip-section {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .clip-section p { font-size: .87rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+
+  /* Log box */
+  .log-box {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 1rem;
+    font-family: 'DM Mono', monospace; font-size: .75rem;
+    color: var(--accent2); max-height: 160px; overflow-y: auto;
+    display: none; margin-top: .75rem;
+  }
+  .export-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+  .msg { padding: .75rem 1rem; border-radius: 6px; font-size: .85rem; margin-bottom: 1rem; }
+  .msg.success { background: rgba(74,240,200,.1); border: 1px solid rgba(74,240,200,.3); color: var(--accent2); }
+  .msg.error { background: rgba(248,113,113,.1); border: 1px solid rgba(248,113,113,.3); color: var(--red); }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header>
+  <div class="logo">Vehicle Study <span>Admin</span></div>
+  <nav>
+    <button class="nav-btn active" onclick="showTab('overview',this)">Overview</button>
+    <button class="nav-btn" onclick="showTab('dataset',this)">Dataset</button>
+    <button class="nav-btn" onclick="showTab('sessions',this)">Sessions</button>
+    <button class="nav-btn" onclick="showTab('clip',this)">CLIP</button>
+    <button class="nav-btn" onclick="showTab('export',this)">Export</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ── Overview ── -->
+  <div class="section active" id="tab-overview">
+    <h2>Overview</h2>
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="val">—</div><div class="lbl">Sessions</div></div>
+    </div>
+
+    <h2>Configuration</h2>
+    <div class="config-row">
+      <label>Tasks per session:</label>
+      <input type="number" id="tasks-input" min="1" max="100" value="10">
+      <button class="btn" onclick="updateConfig()">Save</button>
+      <span id="config-msg" style="font-size:.8rem;color:var(--accent2);display:none">✓ Saved</span>
+    </div>
+  </div>
+
+  <!-- ── Dataset ── -->
+  <div class="section" id="tab-dataset">
+    <h2>Upload Images</h2>
+    <div class="upload-zone" id="img-drop" onclick="document.getElementById('img-file').click()">
+      <input type="file" id="img-file" multiple accept="image/*" onchange="uploadImages(this.files)">
+      <div>Drop vehicle images here or click to browse</div>
+      <div style="font-size:.75rem;margin-top:.4rem">jpg, png, webp — multiple files OK</div>
+    </div>
+    <div id="img-upload-msg"></div>
+
+    <h2 style="margin-top:1.5rem">Bulk Import via JSON</h2>
+    <p style="font-size:.83rem;color:var(--muted);margin-bottom:.75rem;line-height:1.6">
+      Upload a JSON file with vehicle descriptions. Images must already be uploaded above.
+      Format: <code style="color:var(--accent);font-family:'DM Mono',monospace">[{"image_name":"car.jpg","descriptions":[{"text":"...","is_correct":true}]}]</code>
+    </p>
+    <div class="upload-zone" onclick="document.getElementById('json-file').click()">
+      <input type="file" id="json-file" accept=".json" onchange="uploadJson(this.files[0])">
+      <div>Click to upload dataset JSON</div>
+    </div>
+    <div id="json-upload-msg"></div>
+
+    <h2 style="margin-top:1.5rem">Vehicles in Dataset</h2>
+    <div id="vehicles-msg"></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>ID</th><th>Image</th><th>Descriptions</th><th>Correct Desc</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="vehicles-tbody"></tbody>
+      </table>
+    </div>
+    <button class="btn secondary" style="margin-top:.75rem" onclick="loadVehicles()">↻ Refresh</button>
+  </div>
+
+  <!-- ── Sessions ── -->
+  <div class="section" id="tab-sessions">
+    <h2>All Sessions</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Survey Code</th><th>MTurk ID</th><th>Started</th><th>Status</th>
+          <th>Accuracy</th><th>Avg Time</th><th>AI Helped</th>
+        </tr></thead>
+        <tbody id="sessions-tbody"></tbody>
+      </table>
+    </div>
+    <button class="btn secondary" style="margin-top:.75rem" onclick="loadSessions()">↻ Refresh</button>
+  </div>
+
+  <!-- ── CLIP ── -->
+  <div class="section" id="tab-clip">
+    <h2>CLIP Embedding</h2>
+    <div class="clip-section">
+      <p>
+        Running CLIP will score all un-scored descriptions against their vehicle image.
+        Scores are used to re-rank descriptions presented to users (highest similarity first).
+        <br><br>
+        Requires: <code style="color:var(--accent);font-family:'DM Mono',monospace">pip install torch transformers pillow</code>
+        on the server. GPU optional but recommended for speed.
+      </p>
+      <button class="btn" onclick="runClip()">Run CLIP Scoring</button>
+      <div class="log-box" id="clip-log"></div>
+    </div>
+  </div>
+
+  <!-- ── Export ── -->
+  <div class="section" id="tab-export">
+    <h2>Export Results</h2>
+    <div class="export-row">
+      <a href="/api/admin/export/csv" class="btn">Download CSV</a>
+      <a href="/api/admin/export/json" class="btn secondary">Download JSON</a>
+    </div>
+  </div>
+</main>
+
+<script>
+// ── Tab navigation ─────────────────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'overview') loadStats();
+  if (id === 'dataset')  loadVehicles();
+  if (id === 'sessions') loadSessions();
+}
+
+// ── Stats ──────────────────────────────────────────────────────────────────────
+async function loadStats() {
+  const res = await fetch('/api/admin/stats');
+  const d = await res.json();
+  const grid = document.getElementById('stats-grid');
+  grid.innerHTML = `
+    ${stat(d.total_sessions, 'Total Sessions')}
+    ${stat(d.completed_sessions, 'Completed')}
+    ${stat(d.vehicles, 'Vehicles')}
+    ${stat(d.answered_tasks, 'Answers')}
+    ${stat(d.accuracy_pct + '%', 'Accuracy')}
+    ${stat(d.avg_duration_ms ? (d.avg_duration_ms/1000).toFixed(1)+'s' : '—', 'Avg Task Time')}
+  `;
+
+  const cfg = await fetch('/api/admin/config').then(r=>r.json());
+  document.getElementById('tasks-input').value = cfg.tasks_per_session;
+}
+
+function stat(val, lbl) {
+  return `<div class="stat-card"><div class="val">${val}</div><div class="lbl">${lbl}</div></div>`;
+}
+
+async function updateConfig() {
+  const n = parseInt(document.getElementById('tasks-input').value);
+  await fetch('/api/admin/config', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({tasks_per_session: n})
+  });
+  const msg = document.getElementById('config-msg');
+  msg.style.display = 'inline';
+  setTimeout(() => msg.style.display = 'none', 2000);
+}
+
+// ── Vehicles ───────────────────────────────────────────────────────────────────
+async function loadVehicles() {
+  const res = await fetch('/api/admin/vehicles');
+  const rows = await res.json();
+  const tbody = document.getElementById('vehicles-tbody');
+  tbody.innerHTML = rows.map(v => `
+    <tr>
+      <td>${v.id}</td>
+      <td title="${v.image_name}">${v.image_name}</td>
+      <td>${v.desc_count}</td>
+      <td>${v.correct_count}</td>
+      <td>
+        <button class="btn danger" style="padding:.3rem .7rem;font-size:.75rem"
+          onclick="deleteVehicle(${v.id})">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+async function deleteVehicle(id) {
+  if (!confirm('Delete vehicle and all its descriptions?')) return;
+  await fetch(`/api/admin/vehicles/${id}`, {method:'DELETE'});
+  loadVehicles();
+}
+
+// ── Upload images ──────────────────────────────────────────────────────────────
+async function uploadImages(files) {
+  const msgEl = document.getElementById('img-upload-msg');
+  let ok = 0, fail = 0;
+  for (const file of files) {
+    const fd = new FormData();
+    fd.append('file', file);
+    const res = await fetch('/api/admin/upload_image', {method:'POST', body: fd});
+    if (res.ok) ok++; else fail++;
+  }
+  msgEl.innerHTML = `<div class="msg success">Uploaded ${ok} image(s)${fail ? `, ${fail} failed` : ''}.</div>`;
+  loadVehicles();
+}
+
+async function uploadJson(file) {
+  const msgEl = document.getElementById('json-upload-msg');
+  const fd = new FormData();
+  fd.append('file', file);
+  const res = await fetch('/api/admin/upload_dataset', {method:'POST', body: fd});
+  const d = await res.json();
+  if (res.ok) {
+    msgEl.innerHTML = `<div class="msg success">Imported ${d.added} vehicles (${d.skipped_missing_images} skipped — missing images).</div>`;
+  } else {
+    msgEl.innerHTML = `<div class="msg error">${d.detail}</div>`;
+  }
+  loadVehicles();
+}
+
+// ── Sessions ───────────────────────────────────────────────────────────────────
+async function loadSessions() {
+  const res = await fetch('/api/admin/sessions');
+  const rows = await res.json();
+  const tbody = document.getElementById('sessions-tbody');
+  tbody.innerHTML = rows.map(s => {
+    const acc = s.correct !== null && s.total_tasks
+      ? `${((s.correct/s.total_tasks)*100).toFixed(0)}%` : '—';
+    const status = s.completed_at ? 'Completed' : 'In Progress';
+    const pill = s.completed_at ? 'green' : 'yellow';
+    return `
+      <tr>
+        <td style="font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted)">${s.id}</td>
+        <td>${s.mturk_worker_id || '—'}</td>
+        <td>${s.started_at ? s.started_at.slice(0,16) : '—'}</td>
+        <td><span class="pill ${pill}">${status}</span></td>
+        <td>${acc}</td>
+        <td>${s.avg_duration_ms ? (s.avg_duration_ms/1000).toFixed(1)+'s' : '—'}</td>
+        <td>${s.ai_helped ? `<span class="pill green">${s.ai_helped}</span>` : '—'}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// ── CLIP ───────────────────────────────────────────────────────────────────────
+async function runClip() {
+  const log = document.getElementById('clip-log');
+  log.style.display = 'block';
+  log.textContent = 'Running CLIP scoring… this may take several minutes.\n';
+  const res = await fetch('/api/admin/run_clip', {method:'POST'});
+  const d = await res.json();
+  if (res.ok) {
+    log.textContent += `✓ Done. ${d.updated} descriptions updated.`;
+  } else {
+    log.textContent += `✗ Error: ${d.detail}`;
+  }
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────────
+loadStats();
+</script>
+</body>
+</html>
