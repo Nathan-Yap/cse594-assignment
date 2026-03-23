@@ -239,7 +239,7 @@
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>Survey Code</th><th>MTurk ID</th><th>Started</th><th>Status</th>
+          <th>Survey Code</th><th>MTurk ID</th><th>Condition</th><th>Started</th><th>Status</th>
           <th>Accuracy</th><th>Avg Time</th><th>AI Helped</th>
         </tr></thead>
         <tbody id="sessions-tbody"></tbody>
@@ -383,10 +383,13 @@ async function loadSessions() {
       ? `${((s.correct/s.total_tasks)*100).toFixed(0)}%` : '—';
     const status = s.completed_at ? 'Completed' : 'In Progress';
     const pill = s.completed_at ? 'green' : 'yellow';
+    const condLabel = s.condition === 'ai' ? 'AI' : 'Control';
+    const condPill  = s.condition === 'ai' ? 'green' : 'yellow';
     return `
       <tr>
         <td style="font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted)">${s.id}</td>
         <td>${s.mturk_worker_id || '—'}</td>
+        <td><span class="pill ${condPill}">${condLabel}</span></td>
         <td>${s.started_at ? s.started_at.slice(0,16) : '—'}</td>
         <td><span class="pill ${pill}">${status}</span></td>
         <td>${acc}</td>

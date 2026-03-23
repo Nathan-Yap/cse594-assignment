@@ -230,7 +230,7 @@ def get_stats(conn=Depends(get_db)):
 @router.get("/sessions")
 def list_sessions(conn=Depends(get_db)):
     rows = conn.execute("""
-        SELECT s.id, s.mturk_worker_id, s.started_at, s.completed_at,
+        SELECT s.id, s.mturk_worker_id, s.condition, s.started_at, s.completed_at,
                s.ai_helped, s.feedback_text, s.ai_comments,
                COUNT(tr.id) as total_tasks,
                SUM(CASE WHEN tr.is_correct=1 THEN 1 ELSE 0 END) as correct,

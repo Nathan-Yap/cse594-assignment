@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vehicle Description Study</title>
+<title>Vehicle Description Study{% if condition == "control" %} — Control{% endif %}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -213,6 +213,8 @@
 </div>
 
 <script>
+// Condition injected by Jinja2 from the server route
+const CONDITION = '{{ condition }}';
 let surveyCode = null;
 
 async function beginStudy() {
@@ -226,7 +228,7 @@ async function beginStudy() {
     const res = await fetch('/api/sessions/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({})
+      body: JSON.stringify({ condition: CONDITION })
     });
     if (!res.ok) {
       const err = await res.json();
@@ -242,6 +244,7 @@ async function beginStudy() {
     // Store in sessionStorage for the survey page
     sessionStorage.setItem('survey_code', surveyCode);
     sessionStorage.setItem('total_tasks', data.total_tasks);
+    sessionStorage.setItem('condition', CONDITION);
 
     // Change button to proceed
     document.getElementById('btn-text').textContent = 'Proceed to Survey →';

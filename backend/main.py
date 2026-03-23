@@ -56,7 +56,13 @@ app.include_router(admin.router,    prefix="/api/admin",    tags=["admin"])
 # ── HTML routes ───────────────────────────────────────────────────────────────
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    """AI condition landing page (CLIP-ranked descriptions)."""
+    return templates.TemplateResponse("index.html", {"request": request, "condition": "ai"})
+
+@app.get("/control", response_class=HTMLResponse)
+async def index_control(request: Request):
+    """Control condition landing page (randomly ordered descriptions)."""
+    return templates.TemplateResponse("index.html", {"request": request, "condition": "control"})
 
 @app.get("/survey", response_class=HTMLResponse)
 async def survey(request: Request):

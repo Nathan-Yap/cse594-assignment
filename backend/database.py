@@ -51,6 +51,7 @@ def init_db():
     CREATE TABLE IF NOT EXISTS sessions (
         id              TEXT PRIMARY KEY,
         mturk_worker_id TEXT,
+        condition       TEXT NOT NULL DEFAULT 'ai',   -- 'ai' | 'control'
         started_at      TEXT DEFAULT (datetime('now')),
         completed_at    TEXT,
         feedback_text   TEXT,
@@ -79,5 +80,13 @@ def init_db():
     CREATE INDEX IF NOT EXISTS idx_desc_vehicle  ON descriptions(vehicle_id);
     """)
     conn.commit()
+    # ── Migrations (safe to run on existing DBs) ──────────────────────────────
+    # Add condition column if upgrading from a version that didn't have it
+    cols = [row[1] for row in conn.execute("PRAGMA table_info(sessions)").fetchall()]
+    if "condition" not in cols:
+        conn.execute("ALTER TABLE sessions ADD COLUMN condition TEXT NOT NULL DEFAULT 'ai'")
+        conn.commit()
+        print("Migrated: added sessions.condition column")
+
     conn.close()
     print(f"DB at {DB_PATH}")
