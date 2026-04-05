@@ -447,7 +447,7 @@ async function submitAnswer() {
     if (!res.ok) { alert(data.detail || 'Error'); return; }
 
     // Show feedback toast
-    showToast(data.is_correct);
+    // showToast(data.is_correct);
 
     if (data.all_done) {
       // All tasks complete — go to feedback page

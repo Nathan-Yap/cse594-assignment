@@ -34,11 +34,11 @@
   }
   .container {
     position: relative; z-index: 1;
-    max-width: 600px; width: 90%;
+    max-width: 620px; width: 90%;
     padding: 2rem 0;
   }
 
-  /* Summary card */
+  /* ── Summary card ── */
   .summary-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -61,17 +61,14 @@
     border-radius: 8px;
     padding: 1rem .5rem;
   }
-  .stat-value {
-    font-size: 1.8rem; font-weight: 800;
-    color: var(--accent);
-  }
+  .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
   .stat-label {
     font-family: 'DM Mono', monospace;
     font-size: .65rem; color: var(--muted);
     letter-spacing: .08em; margin-top: .25rem;
   }
 
-  /* Feedback form */
+  /* ── Form card ── */
   .form-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -82,55 +79,71 @@
   .form-card h2 {
     font-size: .75rem; letter-spacing: .1em;
     color: var(--accent); font-family: 'DM Mono', monospace;
-    text-transform: uppercase; margin-bottom: 1.25rem;
+    text-transform: uppercase; margin-bottom: 1.5rem;
   }
-  .field { margin-bottom: 1.25rem; }
+  .field { margin-bottom: 1.5rem; }
+  .field:last-of-type { margin-bottom: 0; }
   .field label {
     display: block;
-    font-size: .85rem; font-weight: 600;
-    margin-bottom: .5rem;
+    font-size: .9rem; font-weight: 600;
+    margin-bottom: .35rem;
   }
-  .field p {
-    font-size: .8rem; color: var(--muted); margin-bottom: .5rem;
+  .field .hint {
+    font-size: .78rem; color: var(--muted); margin-bottom: .75rem;
+    line-height: 1.5;
   }
-  .radio-group {
-    display: flex; gap: .5rem; flex-wrap: wrap;
+
+  /* ── Likert scale ── */
+  .likert-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
   }
-  .radio-opt {
-    flex: 1; min-width: 80px;
-    background: var(--surface2);
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    padding: .75rem .5rem;
-    text-align: center;
+  .likert-anchors {
+    display: flex;
+    justify-content: space-between;
+    font-size: .7rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    padding: 0 2px;
+  }
+  .likert-scale {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: .35rem;
+  }
+  .likert-opt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
     cursor: pointer;
-    font-size: .85rem;
-    transition: border-color .15s, background .15s;
     user-select: none;
   }
-  .radio-opt:hover { border-color: rgba(232,240,74,.4); }
-  .radio-opt.selected {
-    border-color: var(--accent);
-    background: rgba(232,240,74,.07);
-    color: var(--accent);
-  }
-  textarea {
+  .likert-btn {
     width: 100%;
-    background: var(--surface2);
-    border: 1.5px solid var(--border);
+    aspect-ratio: 1;
     border-radius: 6px;
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    font-size: .9rem;
-    padding: .75rem 1rem;
-    resize: vertical;
-    min-height: 90px;
-    outline: none;
-    transition: border-color .15s;
+    border: 1.5px solid var(--border);
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: .85rem;
+    color: var(--muted);
+    transition: border-color .15s, background .15s, color .15s;
   }
-  textarea:focus { border-color: rgba(232,240,74,.5); }
-  textarea::placeholder { color: var(--muted); }
+  .likert-opt:hover .likert-btn {
+    border-color: rgba(232,240,74,.4);
+    color: var(--text);
+  }
+  .likert-opt.selected .likert-btn {
+    border-color: var(--accent);
+    background: rgba(232,240,74,.1);
+    color: var(--accent);
+    font-weight: 700;
+  }
 
+  /* ── Submit ── */
   .btn {
     display: block; width: 100%;
     background: var(--accent);
@@ -140,11 +153,12 @@
     font-size: 1rem; font-weight: 700;
     border-radius: 6px; cursor: pointer;
     transition: opacity .15s;
+    margin-top: 1.5rem;
   }
   .btn:disabled { opacity: .35; cursor: not-allowed; }
   .btn:not(:disabled):hover { opacity: .9; }
 
-  /* Completion state */
+  /* ── Done state ── */
   #done-state { display: none; text-align: center; padding: 2rem 0; }
   #done-state h1 { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
   #done-state h1 span { color: var(--accent2); }
@@ -178,37 +192,47 @@
 <div class="container">
 
   <!-- Summary -->
-  <div class="summary-card" id="summary-card">
+  <!-- <div class="summary-card">
     <h2>Your Results</h2>
     <div class="stats-row">
       <div class="stat"><div class="stat-value" id="stat-accuracy">—</div><div class="stat-label">Accuracy</div></div>
       <div class="stat"><div class="stat-value" id="stat-correct">—</div><div class="stat-label">Correct</div></div>
       <div class="stat"><div class="stat-value" id="stat-avg-time">—</div><div class="stat-label">Avg. Time</div></div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Feedback form -->
   <div class="form-card" id="feedback-form">
     <h2>Post-Study Feedback</h2>
 
+    <!-- Q1: Confidence (Likert 1-7) -->
     <div class="field">
-      <label>Did the AI-ranked ordering of descriptions help you?</label>
-      <p>Descriptions may have been reordered based on AI similarity scoring to the image.</p>
-      <div class="radio-group" id="ai-helped-group">
-        <div class="radio-opt" data-val="yes" onclick="selectRadio('ai-helped-group',this)">Yes, it helped</div>
-        <div class="radio-opt" data-val="neutral" onclick="selectRadio('ai-helped-group',this)">Neutral</div>
-        <div class="radio-opt" data-val="no" onclick="selectRadio('ai-helped-group',this)">No / Not sure</div>
+      <label>How confident are you in the classifications you gave for this task?</label>
+      <p class="hint">1 = Not at all confident &nbsp;·&nbsp; 7 = Extremely confident</p>
+      <div class="likert-wrap">
+        <div class="likert-anchors">
+          <span>Not at all confident</span>
+          <span>Extremely confident</span>
+        </div>
+        <div class="likert-scale" id="confidence-group">
+          <!-- generated by JS -->
+        </div>
       </div>
     </div>
 
+    <!-- Q2: Mental effort (Likert 1-7) -->
     <div class="field">
-      <label>How did the AI ranking affect your decision-making?</label>
-      <textarea id="ai-comments" placeholder="e.g. 'I always read the top option first' or 'I ignored the ordering entirely'…"></textarea>
-    </div>
-
-    <div class="field">
-      <label>Any other feedback about the study?</label>
-      <textarea id="feedback-text" placeholder="Difficulty, clarity of images, suggestions…"></textarea>
+      <label>How much mental effort did you put into identifying the vehicles?</label>
+      <p class="hint">1 = Very low effort &nbsp;·&nbsp; 7 = Very high effort</p>
+      <div class="likert-wrap">
+        <div class="likert-anchors">
+          <span>Very low effort</span>
+          <span>Very high effort</span>
+        </div>
+        <div class="likert-scale" id="effort-group">
+          <!-- generated by JS -->
+        </div>
+      </div>
     </div>
 
     <button class="btn" id="submit-fb-btn" onclick="submitFeedback()">
@@ -226,11 +250,32 @@
 </div>
 
 <script>
-const params = new URLSearchParams(location.search);
+const params     = new URLSearchParams(location.search);
 const SESSION_ID = params.get('code') || sessionStorage.getItem('survey_code');
 if (!SESSION_ID) location.href = '/';
 
-let aiHelped = null;
+let confidenceRating = null;
+let mentalEffort     = null;
+
+// ── Build Likert scales ────────────────────────────────────────────────────────
+function buildLikert(containerId, setter) {
+  const container = document.getElementById(containerId);
+  for (let i = 1; i <= 7; i++) {
+    const opt = document.createElement('div');
+    opt.className = 'likert-opt';
+    opt.dataset.val = i;
+    opt.innerHTML = `<div class="likert-btn">${i}</div>`;
+    opt.addEventListener('click', () => {
+      container.querySelectorAll('.likert-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      setter(i);
+    });
+    container.appendChild(opt);
+  }
+}
+
+buildLikert('confidence-group', v => confidenceRating = v);
+buildLikert('effort-group',     v => mentalEffort = v);
 
 // ── Load summary ──────────────────────────────────────────────────────────────
 async function loadSummary() {
@@ -239,49 +284,39 @@ async function loadSummary() {
     if (!res.ok) return;
     const data = await res.json();
     document.getElementById('stat-accuracy').textContent = data.accuracy_pct + '%';
-    document.getElementById('stat-correct').textContent = `${data.correct}/${data.total_tasks}`;
+    document.getElementById('stat-correct').textContent  = `${data.correct}/${data.total_tasks}`;
     const avg = data.avg_duration_ms;
     document.getElementById('stat-avg-time').textContent = avg
-      ? (avg / 1000).toFixed(1) + 's'
-      : '—';
+      ? (avg / 1000).toFixed(1) + 's' : '—';
   } catch (e) { /* non-critical */ }
 }
 
-// ── Radio helper ──────────────────────────────────────────────────────────────
-function selectRadio(groupId, el) {
-  document.querySelectorAll(`#${groupId} .radio-opt`).forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  if (groupId === 'ai-helped-group') aiHelped = el.dataset.val;
-}
-
-// ── Submit feedback ───────────────────────────────────────────────────────────
+// ── Submit ────────────────────────────────────────────────────────────────────
 async function submitFeedback() {
   const btn = document.getElementById('submit-fb-btn');
-  btn.disabled = true;
+  btn.disabled    = true;
   btn.textContent = 'Submitting…';
 
   const body = {
-    session_id: SESSION_ID,
-    feedback_text: document.getElementById('feedback-text').value.trim() || null,
-    ai_helped: aiHelped,
-    ai_comments: document.getElementById('ai-comments').value.trim() || null,
+    session_id:        SESSION_ID,
+    confidence_rating: confidenceRating,
+    mental_effort:     mentalEffort,
   };
 
   try {
     const res = await fetch('/api/sessions/feedback', {
-      method: 'POST',
+      method:  'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
+      body:    JSON.stringify(body),
     });
     if (!res.ok) throw new Error('Server error');
 
-    // Show final code
     document.getElementById('feedback-form').style.display = 'none';
     document.getElementById('final-code-display').textContent = SESSION_ID;
     document.getElementById('done-state').style.display = 'block';
     sessionStorage.clear();
   } catch (e) {
-    btn.disabled = false;
+    btn.disabled    = false;
     btn.textContent = 'Submit Feedback & Get Final Code';
     alert('Error: ' + e.message);
   }

@@ -251,8 +251,8 @@ def export_csv(conn=Depends(get_db)):
             s.mturk_worker_id,
             s.started_at    as session_started,
             s.completed_at  as session_completed,
-            s.ai_helped,
-            s.ai_comments,
+            s.confidence_rating,
+            s.mental_effort,
             tr.task_order,
             v.image_name,
             d.text          as selected_description,
@@ -273,6 +273,7 @@ def export_csv(conn=Depends(get_db)):
         writer = csv.DictWriter(output, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows([dict(r) for r in rows])
+        [print(dict(r)) for r in rows]
 
     output.seek(0)
     return StreamingResponse(

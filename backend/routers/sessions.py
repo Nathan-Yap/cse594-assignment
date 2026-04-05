@@ -26,10 +26,12 @@ class SessionCreate(BaseModel):
 
 
 class FeedbackSubmit(BaseModel):
-    session_id:    str
-    feedback_text: Optional[str] = None
-    ai_helped:     Optional[str] = None   # 'yes' | 'no' | 'neutral'
-    ai_comments:   Optional[str] = None
+    session_id:         str
+    feedback_text:      Optional[str] = None
+    ai_helped:          Optional[str] = None   # 'yes' | 'no' | 'neutral'
+    ai_comments:        Optional[str] = None
+    confidence_rating:  Optional[int] = None   # 1-7 Likert
+    mental_effort:      Optional[int] = None   # 1-7 Likert
 
 
 class AnswerSubmit(BaseModel):
@@ -274,12 +276,22 @@ def submit_answer(body: AnswerSubmit, conn=Depends(get_db)):
 @router.post("/feedback")
 def submit_feedback(body: FeedbackSubmit, conn=Depends(get_db)):
     """Submit post-study feedback and mark session complete."""
+    # Validate Likert values if provided
+    for field, val in [("confidence_rating", body.confidence_rating),
+                       ("mental_effort",      body.mental_effort)]:
+        if val is not None and not (1 <= val <= 7):
+            raise HTTPException(status_code=422, detail=f"{field} must be between 1 and 7")
     conn.execute(
         """UPDATE sessions
-           SET feedback_text = ?, ai_helped = ?, ai_comments = ?,
-               completed_at  = datetime('now')
+           SET feedback_text     = ?,
+               ai_helped         = ?,
+               ai_comments       = ?,
+               confidence_rating = ?,
+               mental_effort     = ?,
+               completed_at      = datetime('now')
            WHERE id = ?""",
-        (body.feedback_text, body.ai_helped, body.ai_comments, body.session_id)
+        (body.feedback_text, body.ai_helped, body.ai_comments,
+         body.confidence_rating, body.mental_effort, body.session_id)
     )
     conn.commit()
     return {"status": "ok"}

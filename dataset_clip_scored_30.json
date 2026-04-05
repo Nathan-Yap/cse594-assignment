@@ -1,0 +1,2132 @@
+[
+  {
+    "image_name": "0432_c013_00086075_1.jpg",
+    "descriptions": [
+      {
+        "text": "gray suv",
+        "is_correct": false,
+        "clip_score": 0.232877,
+        "clip_rank": 1
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.217387,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown/gold minivan",
+        "is_correct": false,
+        "clip_score": 0.213591,
+        "clip_rank": 3
+      },
+      {
+        "text": "brown golden van",
+        "is_correct": false,
+        "clip_score": 0.20604,
+        "clip_rank": 4
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": true,
+        "clip_score": 0.204634,
+        "clip_rank": 5
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.194753,
+        "clip_rank": 6
+      },
+      {
+        "text": "red van",
+        "is_correct": false,
+        "clip_score": 0.182942,
+        "clip_rank": 7
+      },
+      {
+        "text": "blue truck",
+        "is_correct": false,
+        "clip_score": 0.175462,
+        "clip_rank": 8
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.173372,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup with red logo",
+        "is_correct": false,
+        "clip_score": 0.160228,
+        "clip_rank": 10
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.153088,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0589_c019_00000740_0.jpg",
+    "descriptions": [
+      {
+        "text": "black suv with blue license plate",
+        "is_correct": true,
+        "clip_score": 0.236203,
+        "clip_rank": 1
+      },
+      {
+        "text": "white honda suv",
+        "is_correct": false,
+        "clip_score": 0.190483,
+        "clip_rank": 2
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.169551,
+        "clip_rank": 3
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.151268,
+        "clip_rank": 4
+      },
+      {
+        "text": "golden suv",
+        "is_correct": false,
+        "clip_score": 0.150505,
+        "clip_rank": 5
+      },
+      {
+        "text": "brown/gold minivan",
+        "is_correct": false,
+        "clip_score": 0.143035,
+        "clip_rank": 6
+      },
+      {
+        "text": "gray truck",
+        "is_correct": false,
+        "clip_score": 0.131564,
+        "clip_rank": 7
+      },
+      {
+        "text": "gray blue sedan",
+        "is_correct": false,
+        "clip_score": 0.131083,
+        "clip_rank": 8
+      },
+      {
+        "text": "green pickup with red accents",
+        "is_correct": false,
+        "clip_score": 0.071368,
+        "clip_rank": 9
+      },
+      {
+        "text": "golden bmw sedan",
+        "is_correct": false,
+        "clip_score": 0.068479,
+        "clip_rank": 10
+      },
+      {
+        "text": "brown estate",
+        "is_correct": false,
+        "clip_score": 0.060038,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0465_c017_00005550_0.jpg",
+    "descriptions": [
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.242456,
+        "clip_rank": 1
+      },
+      {
+        "text": "black sedan with silver grill",
+        "is_correct": true,
+        "clip_score": 0.233841,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown/golden suv",
+        "is_correct": false,
+        "clip_score": 0.218644,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray blue sedan",
+        "is_correct": false,
+        "clip_score": 0.204402,
+        "clip_rank": 4
+      },
+      {
+        "text": "gray blue sedan",
+        "is_correct": false,
+        "clip_score": 0.204402,
+        "clip_rank": 5
+      },
+      {
+        "text": "red taxi cab sedan",
+        "is_correct": false,
+        "clip_score": 0.199825,
+        "clip_rank": 6
+      },
+      {
+        "text": "white/brown truck",
+        "is_correct": false,
+        "clip_score": 0.194039,
+        "clip_rank": 7
+      },
+      {
+        "text": "commercial white truck",
+        "is_correct": false,
+        "clip_score": 0.176484,
+        "clip_rank": 8
+      },
+      {
+        "text": "greenish white sedan",
+        "is_correct": false,
+        "clip_score": 0.161602,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup",
+        "is_correct": false,
+        "clip_score": 0.146607,
+        "clip_rank": 10
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.131196,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0374_c011_00026535_0.jpg",
+    "descriptions": [
+      {
+        "text": "white honda suv",
+        "is_correct": true,
+        "clip_score": 0.246851,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray suv",
+        "is_correct": false,
+        "clip_score": 0.201488,
+        "clip_rank": 2
+      },
+      {
+        "text": "gray green sedan",
+        "is_correct": false,
+        "clip_score": 0.193504,
+        "clip_rank": 3
+      },
+      {
+        "text": "brown suv",
+        "is_correct": false,
+        "clip_score": 0.192678,
+        "clip_rank": 4
+      },
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.182955,
+        "clip_rank": 5
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.163634,
+        "clip_rank": 6
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.156449,
+        "clip_rank": 7
+      },
+      {
+        "text": "brown pickup",
+        "is_correct": false,
+        "clip_score": 0.140029,
+        "clip_rank": 8
+      },
+      {
+        "text": "blue coach bus",
+        "is_correct": false,
+        "clip_score": 0.137685,
+        "clip_rank": 9
+      },
+      {
+        "text": "white pickup truck with red accents",
+        "is_correct": false,
+        "clip_score": 0.126441,
+        "clip_rank": 10
+      },
+      {
+        "text": "red dump truck",
+        "is_correct": false,
+        "clip_score": 0.107282,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0422_c011_00041355_0.jpg",
+    "descriptions": [
+      {
+        "text": "silver/gray mitsubishi suv",
+        "is_correct": true,
+        "clip_score": 0.235861,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray suv",
+        "is_correct": false,
+        "clip_score": 0.209555,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.20166,
+        "clip_rank": 3
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.188941,
+        "clip_rank": 4
+      },
+      {
+        "text": "yellow truck",
+        "is_correct": false,
+        "clip_score": 0.184561,
+        "clip_rank": 5
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.166594,
+        "clip_rank": 6
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.164057,
+        "clip_rank": 7
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.160163,
+        "clip_rank": 8
+      },
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.154509,
+        "clip_rank": 9
+      },
+      {
+        "text": "golden van",
+        "is_correct": false,
+        "clip_score": 0.14654,
+        "clip_rank": 10
+      },
+      {
+        "text": "green pickup",
+        "is_correct": false,
+        "clip_score": 0.141898,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0255_c013_00025030_1.jpg",
+    "descriptions": [
+      {
+        "text": "brown suv hatchback",
+        "is_correct": true,
+        "clip_score": 0.242739,
+        "clip_rank": 1
+      },
+      {
+        "text": "silver/gray mitsubishi suv",
+        "is_correct": false,
+        "clip_score": 0.2062,
+        "clip_rank": 2
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.204933,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray green sedan",
+        "is_correct": false,
+        "clip_score": 0.198078,
+        "clip_rank": 4
+      },
+      {
+        "text": "black mitsubishi sedan",
+        "is_correct": false,
+        "clip_score": 0.177597,
+        "clip_rank": 5
+      },
+      {
+        "text": "orange hatchback",
+        "is_correct": false,
+        "clip_score": 0.169338,
+        "clip_rank": 6
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.156867,
+        "clip_rank": 7
+      },
+      {
+        "text": "brown pickup",
+        "is_correct": false,
+        "clip_score": 0.156167,
+        "clip_rank": 8
+      },
+      {
+        "text": "blue coach bus",
+        "is_correct": false,
+        "clip_score": 0.152315,
+        "clip_rank": 9
+      },
+      {
+        "text": "red/gray sedan with orange accents",
+        "is_correct": false,
+        "clip_score": 0.149604,
+        "clip_rank": 10
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.126334,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0329_c014_00048720_0.jpg",
+    "descriptions": [
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": true,
+        "clip_score": 0.218711,
+        "clip_rank": 1
+      },
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.1926,
+        "clip_rank": 2
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.175379,
+        "clip_rank": 3
+      },
+      {
+        "text": "black van",
+        "is_correct": false,
+        "clip_score": 0.156103,
+        "clip_rank": 4
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.155483,
+        "clip_rank": 5
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.152269,
+        "clip_rank": 6
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.150616,
+        "clip_rank": 7
+      },
+      {
+        "text": "silver gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.140697,
+        "clip_rank": 8
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.135499,
+        "clip_rank": 9
+      },
+      {
+        "text": "white pickup truck with red accents",
+        "is_correct": false,
+        "clip_score": 0.124981,
+        "clip_rank": 10
+      },
+      {
+        "text": "green pickup with red logo",
+        "is_correct": false,
+        "clip_score": 0.098051,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0715_c009_00014735_0.jpg",
+    "descriptions": [
+      {
+        "text": "black honda sedan",
+        "is_correct": true,
+        "clip_score": 0.236621,
+        "clip_rank": 1
+      },
+      {
+        "text": "white honda suv",
+        "is_correct": false,
+        "clip_score": 0.211087,
+        "clip_rank": 2
+      },
+      {
+        "text": "black mitsubishi sedan",
+        "is_correct": false,
+        "clip_score": 0.209997,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.148271,
+        "clip_rank": 4
+      },
+      {
+        "text": "brown commercial truck",
+        "is_correct": false,
+        "clip_score": 0.140855,
+        "clip_rank": 5
+      },
+      {
+        "text": "brown dump truck",
+        "is_correct": false,
+        "clip_score": 0.131887,
+        "clip_rank": 6
+      },
+      {
+        "text": "blue coach bus",
+        "is_correct": false,
+        "clip_score": 0.125807,
+        "clip_rank": 7
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.123402,
+        "clip_rank": 8
+      },
+      {
+        "text": "blue bus",
+        "is_correct": false,
+        "clip_score": 0.118048,
+        "clip_rank": 9
+      },
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.115516,
+        "clip_rank": 10
+      },
+      {
+        "text": "golden van",
+        "is_correct": false,
+        "clip_score": 0.097011,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0165_c015_00081575_0.jpg",
+    "descriptions": [
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.215612,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray green sedan",
+        "is_correct": false,
+        "clip_score": 0.206402,
+        "clip_rank": 2
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.202392,
+        "clip_rank": 3
+      },
+      {
+        "text": "silver gray pickup truck",
+        "is_correct": true,
+        "clip_score": 0.188877,
+        "clip_rank": 4
+      },
+      {
+        "text": "blue passenger bus",
+        "is_correct": false,
+        "clip_score": 0.18779,
+        "clip_rank": 5
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.185753,
+        "clip_rank": 6
+      },
+      {
+        "text": "red truck",
+        "is_correct": false,
+        "clip_score": 0.172362,
+        "clip_rank": 7
+      },
+      {
+        "text": "green pickup",
+        "is_correct": false,
+        "clip_score": 0.166209,
+        "clip_rank": 8
+      },
+      {
+        "text": "golden suv",
+        "is_correct": false,
+        "clip_score": 0.157375,
+        "clip_rank": 9
+      },
+      {
+        "text": "red dump truck",
+        "is_correct": false,
+        "clip_score": 0.146625,
+        "clip_rank": 10
+      },
+      {
+        "text": "black audi sedan",
+        "is_correct": false,
+        "clip_score": 0.135655,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0029_c014_00070680_0.jpg",
+    "descriptions": [
+      {
+        "text": "red taxi cab sedan",
+        "is_correct": true,
+        "clip_score": 0.268586,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray green sedan",
+        "is_correct": false,
+        "clip_score": 0.222152,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown sedan",
+        "is_correct": false,
+        "clip_score": 0.207085,
+        "clip_rank": 3
+      },
+      {
+        "text": "white suv",
+        "is_correct": false,
+        "clip_score": 0.196258,
+        "clip_rank": 4
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.196028,
+        "clip_rank": 5
+      },
+      {
+        "text": "white/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.195017,
+        "clip_rank": 6
+      },
+      {
+        "text": "red/gray sedan with orange accents",
+        "is_correct": false,
+        "clip_score": 0.18644,
+        "clip_rank": 7
+      },
+      {
+        "text": "blue sedan",
+        "is_correct": false,
+        "clip_score": 0.184481,
+        "clip_rank": 8
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.175665,
+        "clip_rank": 9
+      },
+      {
+        "text": "blue coach bus",
+        "is_correct": false,
+        "clip_score": 0.170546,
+        "clip_rank": 10
+      },
+      {
+        "text": "silver/gray mitsubishi suv",
+        "is_correct": false,
+        "clip_score": 0.166024,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0048_c004_00029190_1.jpg",
+    "descriptions": [
+      {
+        "text": "black honda sedan",
+        "is_correct": false,
+        "clip_score": 0.226928,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray brown sedan",
+        "is_correct": false,
+        "clip_score": 0.2182,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown sedan",
+        "is_correct": false,
+        "clip_score": 0.208616,
+        "clip_rank": 3
+      },
+      {
+        "text": "blue sedan",
+        "is_correct": true,
+        "clip_score": 0.207965,
+        "clip_rank": 4
+      },
+      {
+        "text": "silver gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.183227,
+        "clip_rank": 5
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.175458,
+        "clip_rank": 6
+      },
+      {
+        "text": "brown commercial truck",
+        "is_correct": false,
+        "clip_score": 0.174002,
+        "clip_rank": 7
+      },
+      {
+        "text": "brown/gold minivan",
+        "is_correct": false,
+        "clip_score": 0.170264,
+        "clip_rank": 8
+      },
+      {
+        "text": "brown dump truck",
+        "is_correct": false,
+        "clip_score": 0.152903,
+        "clip_rank": 9
+      },
+      {
+        "text": "red sedan taxi cab",
+        "is_correct": false,
+        "clip_score": 0.132634,
+        "clip_rank": 10
+      },
+      {
+        "text": "brown estate",
+        "is_correct": false,
+        "clip_score": 0.131006,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0317_c004_00015790_0.jpg",
+    "descriptions": [
+      {
+        "text": "blue sedan",
+        "is_correct": false,
+        "clip_score": 0.197729,
+        "clip_rank": 1
+      },
+      {
+        "text": "black sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.194849,
+        "clip_rank": 2
+      },
+      {
+        "text": "white sedan",
+        "is_correct": true,
+        "clip_score": 0.188492,
+        "clip_rank": 3
+      },
+      {
+        "text": "greenish white sedan",
+        "is_correct": false,
+        "clip_score": 0.185671,
+        "clip_rank": 4
+      },
+      {
+        "text": "black sedan with silver grill",
+        "is_correct": false,
+        "clip_score": 0.172387,
+        "clip_rank": 5
+      },
+      {
+        "text": "white pickup",
+        "is_correct": false,
+        "clip_score": 0.164954,
+        "clip_rank": 6
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.156821,
+        "clip_rank": 7
+      },
+      {
+        "text": "red/gray sedan with orange accents",
+        "is_correct": false,
+        "clip_score": 0.156203,
+        "clip_rank": 8
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.143524,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup with red logo",
+        "is_correct": false,
+        "clip_score": 0.137648,
+        "clip_rank": 10
+      },
+      {
+        "text": "brown dump truck",
+        "is_correct": false,
+        "clip_score": 0.117339,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0564_c002_00038690_1.jpg",
+    "descriptions": [
+      {
+        "text": "gray sedan",
+        "is_correct": true,
+        "clip_score": 0.203198,
+        "clip_rank": 1
+      },
+      {
+        "text": "white polic car",
+        "is_correct": false,
+        "clip_score": 0.20045,
+        "clip_rank": 2
+      },
+      {
+        "text": "white sedan",
+        "is_correct": false,
+        "clip_score": 0.190625,
+        "clip_rank": 3
+      },
+      {
+        "text": "brown pickup",
+        "is_correct": false,
+        "clip_score": 0.17333,
+        "clip_rank": 4
+      },
+      {
+        "text": "brown commercial truck",
+        "is_correct": false,
+        "clip_score": 0.170065,
+        "clip_rank": 5
+      },
+      {
+        "text": "red truck",
+        "is_correct": false,
+        "clip_score": 0.164737,
+        "clip_rank": 6
+      },
+      {
+        "text": "golden suv",
+        "is_correct": false,
+        "clip_score": 0.164001,
+        "clip_rank": 7
+      },
+      {
+        "text": "golden sedan",
+        "is_correct": false,
+        "clip_score": 0.157197,
+        "clip_rank": 8
+      },
+      {
+        "text": "red pickup",
+        "is_correct": false,
+        "clip_score": 0.154453,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup",
+        "is_correct": false,
+        "clip_score": 0.152443,
+        "clip_rank": 10
+      },
+      {
+        "text": "brown estate",
+        "is_correct": false,
+        "clip_score": 0.098174,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0054_c016_00001970_0.jpg",
+    "descriptions": [
+      {
+        "text": "commercial white truck",
+        "is_correct": false,
+        "clip_score": 0.229216,
+        "clip_rank": 1
+      },
+      {
+        "text": "white truck",
+        "is_correct": false,
+        "clip_score": 0.226894,
+        "clip_rank": 2
+      },
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.201323,
+        "clip_rank": 3
+      },
+      {
+        "text": "black suv with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.200144,
+        "clip_rank": 4
+      },
+      {
+        "text": "white pickup truck with red accents",
+        "is_correct": true,
+        "clip_score": 0.189636,
+        "clip_rank": 5
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.159609,
+        "clip_rank": 6
+      },
+      {
+        "text": "red hatchback volkswagen",
+        "is_correct": false,
+        "clip_score": 0.148678,
+        "clip_rank": 7
+      },
+      {
+        "text": "red sedan",
+        "is_correct": false,
+        "clip_score": 0.148229,
+        "clip_rank": 8
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.138325,
+        "clip_rank": 9
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.127396,
+        "clip_rank": 10
+      },
+      {
+        "text": "greenish white sedan",
+        "is_correct": false,
+        "clip_score": 0.126741,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0575_c014_00003810_0.jpg",
+    "descriptions": [
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.225162,
+        "clip_rank": 1
+      },
+      {
+        "text": "red/gray sedan with orange accents",
+        "is_correct": true,
+        "clip_score": 0.213973,
+        "clip_rank": 2
+      },
+      {
+        "text": "white suv",
+        "is_correct": false,
+        "clip_score": 0.185875,
+        "clip_rank": 3
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.174094,
+        "clip_rank": 4
+      },
+      {
+        "text": "greenish white sedan",
+        "is_correct": false,
+        "clip_score": 0.167243,
+        "clip_rank": 5
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.161324,
+        "clip_rank": 6
+      },
+      {
+        "text": "black van",
+        "is_correct": false,
+        "clip_score": 0.158484,
+        "clip_rank": 7
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.153717,
+        "clip_rank": 8
+      },
+      {
+        "text": "red hatchback volkswagen",
+        "is_correct": false,
+        "clip_score": 0.148777,
+        "clip_rank": 9
+      },
+      {
+        "text": "yellow truck",
+        "is_correct": false,
+        "clip_score": 0.146867,
+        "clip_rank": 10
+      },
+      {
+        "text": "white pickup",
+        "is_correct": false,
+        "clip_score": 0.130253,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0692_c016_00076200_0.jpg",
+    "descriptions": [
+      {
+        "text": "black audi sedan",
+        "is_correct": true,
+        "clip_score": 0.261437,
+        "clip_rank": 1
+      },
+      {
+        "text": "black sedan with silver grill",
+        "is_correct": false,
+        "clip_score": 0.22787,
+        "clip_rank": 2
+      },
+      {
+        "text": "gray brown sedan",
+        "is_correct": false,
+        "clip_score": 0.216735,
+        "clip_rank": 3
+      },
+      {
+        "text": "brown sedan",
+        "is_correct": false,
+        "clip_score": 0.197278,
+        "clip_rank": 4
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.164287,
+        "clip_rank": 5
+      },
+      {
+        "text": "white/brown truck",
+        "is_correct": false,
+        "clip_score": 0.159813,
+        "clip_rank": 6
+      },
+      {
+        "text": "gray van",
+        "is_correct": false,
+        "clip_score": 0.153425,
+        "clip_rank": 7
+      },
+      {
+        "text": "blue truck",
+        "is_correct": false,
+        "clip_score": 0.125081,
+        "clip_rank": 8
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.117492,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup",
+        "is_correct": false,
+        "clip_score": 0.113168,
+        "clip_rank": 10
+      },
+      {
+        "text": "red dump truck",
+        "is_correct": false,
+        "clip_score": 0.10001,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0087_c012_00002250_0.jpg",
+    "descriptions": [
+      {
+        "text": "brown pickup",
+        "is_correct": false,
+        "clip_score": 0.218375,
+        "clip_rank": 1
+      },
+      {
+        "text": "black mitsubishi sedan",
+        "is_correct": false,
+        "clip_score": 0.211123,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown/golden suv",
+        "is_correct": false,
+        "clip_score": 0.206196,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray green transport truck",
+        "is_correct": false,
+        "clip_score": 0.202253,
+        "clip_rank": 4
+      },
+      {
+        "text": "white suv",
+        "is_correct": false,
+        "clip_score": 0.195292,
+        "clip_rank": 5
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.192698,
+        "clip_rank": 6
+      },
+      {
+        "text": "red pickup",
+        "is_correct": false,
+        "clip_score": 0.189201,
+        "clip_rank": 7
+      },
+      {
+        "text": "black sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.189003,
+        "clip_rank": 8
+      },
+      {
+        "text": "green toyota pickup with red accents",
+        "is_correct": true,
+        "clip_score": 0.182895,
+        "clip_rank": 9
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.150693,
+        "clip_rank": 10
+      },
+      {
+        "text": "greenish white sedan",
+        "is_correct": false,
+        "clip_score": 0.10975,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0242_c007_00031670_0.jpg",
+    "descriptions": [
+      {
+        "text": "black honda sedan",
+        "is_correct": false,
+        "clip_score": 0.213514,
+        "clip_rank": 1
+      },
+      {
+        "text": "brown golden van",
+        "is_correct": true,
+        "clip_score": 0.205321,
+        "clip_rank": 2
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.199695,
+        "clip_rank": 3
+      },
+      {
+        "text": "white audi sedan",
+        "is_correct": false,
+        "clip_score": 0.188066,
+        "clip_rank": 4
+      },
+      {
+        "text": "brown commercial truck",
+        "is_correct": false,
+        "clip_score": 0.178949,
+        "clip_rank": 5
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.178811,
+        "clip_rank": 6
+      },
+      {
+        "text": "golden suv",
+        "is_correct": false,
+        "clip_score": 0.177228,
+        "clip_rank": 7
+      },
+      {
+        "text": "black sedan with silver grill",
+        "is_correct": false,
+        "clip_score": 0.171292,
+        "clip_rank": 8
+      },
+      {
+        "text": "red truck",
+        "is_correct": false,
+        "clip_score": 0.170105,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup with red logo",
+        "is_correct": false,
+        "clip_score": 0.156853,
+        "clip_rank": 10
+      },
+      {
+        "text": "green toyota pickup with red accents",
+        "is_correct": false,
+        "clip_score": 0.142487,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0107_c007_00088995_0.jpg",
+    "descriptions": [
+      {
+        "text": "gray green sedan",
+        "is_correct": false,
+        "clip_score": 0.215631,
+        "clip_rank": 1
+      },
+      {
+        "text": "brown pickup",
+        "is_correct": false,
+        "clip_score": 0.214914,
+        "clip_rank": 2
+      },
+      {
+        "text": "gray van",
+        "is_correct": false,
+        "clip_score": 0.213733,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray blue sedan",
+        "is_correct": false,
+        "clip_score": 0.211311,
+        "clip_rank": 4
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.207525,
+        "clip_rank": 5
+      },
+      {
+        "text": "brown sedan",
+        "is_correct": false,
+        "clip_score": 0.199178,
+        "clip_rank": 6
+      },
+      {
+        "text": "red van",
+        "is_correct": false,
+        "clip_score": 0.194157,
+        "clip_rank": 7
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.18157,
+        "clip_rank": 8
+      },
+      {
+        "text": "red pickup",
+        "is_correct": false,
+        "clip_score": 0.176951,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup with red accents",
+        "is_correct": true,
+        "clip_score": 0.161282,
+        "clip_rank": 10
+      },
+      {
+        "text": "golden bmw sedan",
+        "is_correct": false,
+        "clip_score": 0.112806,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0524_c001_00059670_0.jpg",
+    "descriptions": [
+      {
+        "text": "gray green sedan",
+        "is_correct": true,
+        "clip_score": 0.208185,
+        "clip_rank": 1
+      },
+      {
+        "text": "brown suv",
+        "is_correct": false,
+        "clip_score": 0.190759,
+        "clip_rank": 2
+      },
+      {
+        "text": "silver/gray mitsubishi suv",
+        "is_correct": false,
+        "clip_score": 0.175588,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.170323,
+        "clip_rank": 4
+      },
+      {
+        "text": "white honda suv",
+        "is_correct": false,
+        "clip_score": 0.160941,
+        "clip_rank": 5
+      },
+      {
+        "text": "gray van",
+        "is_correct": false,
+        "clip_score": 0.156781,
+        "clip_rank": 6
+      },
+      {
+        "text": "black audi sedan",
+        "is_correct": false,
+        "clip_score": 0.149068,
+        "clip_rank": 7
+      },
+      {
+        "text": "blue coach bus",
+        "is_correct": false,
+        "clip_score": 0.135368,
+        "clip_rank": 8
+      },
+      {
+        "text": "red/gray sedan with orange accents",
+        "is_correct": false,
+        "clip_score": 0.132295,
+        "clip_rank": 9
+      },
+      {
+        "text": "golden van",
+        "is_correct": false,
+        "clip_score": 0.123468,
+        "clip_rank": 10
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.122264,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0059_c008_00070455_0.jpg",
+    "descriptions": [
+      {
+        "text": "black suv with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.245081,
+        "clip_rank": 1
+      },
+      {
+        "text": "brown pickup",
+        "is_correct": false,
+        "clip_score": 0.230985,
+        "clip_rank": 2
+      },
+      {
+        "text": "green pickup with red logo",
+        "is_correct": false,
+        "clip_score": 0.193784,
+        "clip_rank": 3
+      },
+      {
+        "text": "red pickup",
+        "is_correct": true,
+        "clip_score": 0.193572,
+        "clip_rank": 4
+      },
+      {
+        "text": "gray brown sedan",
+        "is_correct": false,
+        "clip_score": 0.186876,
+        "clip_rank": 5
+      },
+      {
+        "text": "black van",
+        "is_correct": false,
+        "clip_score": 0.186652,
+        "clip_rank": 6
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.183209,
+        "clip_rank": 7
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.18159,
+        "clip_rank": 8
+      },
+      {
+        "text": "white/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.168402,
+        "clip_rank": 9
+      },
+      {
+        "text": "golden suv",
+        "is_correct": false,
+        "clip_score": 0.160907,
+        "clip_rank": 10
+      },
+      {
+        "text": "black audi sedan",
+        "is_correct": false,
+        "clip_score": 0.14263,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0766_c013_00080745_0.jpg",
+    "descriptions": [
+      {
+        "text": "brown sedan",
+        "is_correct": false,
+        "clip_score": 0.214718,
+        "clip_rank": 1
+      },
+      {
+        "text": "green sedan",
+        "is_correct": false,
+        "clip_score": 0.188087,
+        "clip_rank": 2
+      },
+      {
+        "text": "golden bmw sedan",
+        "is_correct": false,
+        "clip_score": 0.182092,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.179106,
+        "clip_rank": 4
+      },
+      {
+        "text": "silver gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.174531,
+        "clip_rank": 5
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.16885,
+        "clip_rank": 6
+      },
+      {
+        "text": "blue truck",
+        "is_correct": false,
+        "clip_score": 0.163322,
+        "clip_rank": 7
+      },
+      {
+        "text": "red dump truck",
+        "is_correct": false,
+        "clip_score": 0.148312,
+        "clip_rank": 8
+      },
+      {
+        "text": "orange hatchback",
+        "is_correct": false,
+        "clip_score": 0.144022,
+        "clip_rank": 9
+      },
+      {
+        "text": "yellow truck",
+        "is_correct": false,
+        "clip_score": 0.142459,
+        "clip_rank": 10
+      },
+      {
+        "text": "white pickup truck with red accents",
+        "is_correct": false,
+        "clip_score": 0.111731,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0387_c010_00071310_0.jpg",
+    "descriptions": [
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.211337,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray sedan",
+        "is_correct": false,
+        "clip_score": 0.207958,
+        "clip_rank": 2
+      },
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.207693,
+        "clip_rank": 3
+      },
+      {
+        "text": "white sedan",
+        "is_correct": false,
+        "clip_score": 0.205452,
+        "clip_rank": 4
+      },
+      {
+        "text": "black suv",
+        "is_correct": false,
+        "clip_score": 0.200418,
+        "clip_rank": 5
+      },
+      {
+        "text": "black mitsubishi sedan",
+        "is_correct": false,
+        "clip_score": 0.195156,
+        "clip_rank": 6
+      },
+      {
+        "text": "brown sedan",
+        "is_correct": false,
+        "clip_score": 0.185174,
+        "clip_rank": 7
+      },
+      {
+        "text": "black van",
+        "is_correct": false,
+        "clip_score": 0.182788,
+        "clip_rank": 8
+      },
+      {
+        "text": "gray green transport truck",
+        "is_correct": false,
+        "clip_score": 0.163838,
+        "clip_rank": 9
+      },
+      {
+        "text": "green pickup with red logo",
+        "is_correct": false,
+        "clip_score": 0.145518,
+        "clip_rank": 10
+      },
+      {
+        "text": "green pickup with red accents",
+        "is_correct": false,
+        "clip_score": 0.088248,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0073_c001_00045055_0.jpg",
+    "descriptions": [
+      {
+        "text": "white/brown truck",
+        "is_correct": false,
+        "clip_score": 0.224958,
+        "clip_rank": 1
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.221365,
+        "clip_rank": 2
+      },
+      {
+        "text": "brown/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.219244,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray brown sedan",
+        "is_correct": false,
+        "clip_score": 0.217962,
+        "clip_rank": 4
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.209286,
+        "clip_rank": 5
+      },
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.202995,
+        "clip_rank": 6
+      },
+      {
+        "text": "gray hatchback",
+        "is_correct": false,
+        "clip_score": 0.20094,
+        "clip_rank": 7
+      },
+      {
+        "text": "brown commercial truck",
+        "is_correct": false,
+        "clip_score": 0.199925,
+        "clip_rank": 8
+      },
+      {
+        "text": "white/gray sedan",
+        "is_correct": false,
+        "clip_score": 0.198879,
+        "clip_rank": 9
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.189986,
+        "clip_rank": 10
+      },
+      {
+        "text": "blue truck",
+        "is_correct": false,
+        "clip_score": 0.180738,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0366_c002_00076530_0.jpg",
+    "descriptions": [
+      {
+        "text": "white police car",
+        "is_correct": false,
+        "clip_score": 0.222071,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray suv",
+        "is_correct": false,
+        "clip_score": 0.203855,
+        "clip_rank": 2
+      },
+      {
+        "text": "white truck",
+        "is_correct": false,
+        "clip_score": 0.192238,
+        "clip_rank": 3
+      },
+      {
+        "text": "commercial white truck",
+        "is_correct": false,
+        "clip_score": 0.183321,
+        "clip_rank": 4
+      },
+      {
+        "text": "white commercial truck",
+        "is_correct": false,
+        "clip_score": 0.1725,
+        "clip_rank": 5
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.159219,
+        "clip_rank": 6
+      },
+      {
+        "text": "yellow hatchback",
+        "is_correct": false,
+        "clip_score": 0.143754,
+        "clip_rank": 7
+      },
+      {
+        "text": "red/gray sedan with orange accents",
+        "is_correct": false,
+        "clip_score": 0.142266,
+        "clip_rank": 8
+      },
+      {
+        "text": "blue passenger bus",
+        "is_correct": false,
+        "clip_score": 0.122865,
+        "clip_rank": 9
+      },
+      {
+        "text": "red pickup",
+        "is_correct": false,
+        "clip_score": 0.114352,
+        "clip_rank": 10
+      },
+      {
+        "text": "brown estate",
+        "is_correct": false,
+        "clip_score": 0.087527,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0502_c008_00008745_0.jpg",
+    "descriptions": [
+      {
+        "text": "white polic car",
+        "is_correct": false,
+        "clip_score": 0.175631,
+        "clip_rank": 1
+      },
+      {
+        "text": "brown/golden suv",
+        "is_correct": false,
+        "clip_score": 0.170227,
+        "clip_rank": 2
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.154202,
+        "clip_rank": 3
+      },
+      {
+        "text": "black mitsubishi sedan",
+        "is_correct": false,
+        "clip_score": 0.152252,
+        "clip_rank": 4
+      },
+      {
+        "text": "commercial white truck",
+        "is_correct": false,
+        "clip_score": 0.144131,
+        "clip_rank": 5
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.133518,
+        "clip_rank": 6
+      },
+      {
+        "text": "red van",
+        "is_correct": false,
+        "clip_score": 0.133121,
+        "clip_rank": 7
+      },
+      {
+        "text": "blue passenger bus",
+        "is_correct": false,
+        "clip_score": 0.12686,
+        "clip_rank": 8
+      },
+      {
+        "text": "gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.124042,
+        "clip_rank": 9
+      },
+      {
+        "text": "silver gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.123141,
+        "clip_rank": 10
+      },
+      {
+        "text": "blue truck",
+        "is_correct": false,
+        "clip_score": 0.117547,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0325_c011_00051570_0.jpg",
+    "descriptions": [
+      {
+        "text": "white/brown truck",
+        "is_correct": false,
+        "clip_score": 0.203917,
+        "clip_rank": 1
+      },
+      {
+        "text": "gray blue sedan",
+        "is_correct": false,
+        "clip_score": 0.203644,
+        "clip_rank": 2
+      },
+      {
+        "text": "white minivan",
+        "is_correct": false,
+        "clip_score": 0.197342,
+        "clip_rank": 3
+      },
+      {
+        "text": "green sedan",
+        "is_correct": false,
+        "clip_score": 0.183326,
+        "clip_rank": 4
+      },
+      {
+        "text": "black suv with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.17626,
+        "clip_rank": 5
+      },
+      {
+        "text": "red hatchback",
+        "is_correct": false,
+        "clip_score": 0.147743,
+        "clip_rank": 6
+      },
+      {
+        "text": "red hatchback volkswagen",
+        "is_correct": false,
+        "clip_score": 0.142056,
+        "clip_rank": 7
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.139581,
+        "clip_rank": 8
+      },
+      {
+        "text": "black van",
+        "is_correct": false,
+        "clip_score": 0.137962,
+        "clip_rank": 9
+      },
+      {
+        "text": "red van",
+        "is_correct": false,
+        "clip_score": 0.133251,
+        "clip_rank": 10
+      },
+      {
+        "text": "green toyota pickup with red accents",
+        "is_correct": false,
+        "clip_score": 0.121879,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0243_c016_00031310_0.jpg",
+    "descriptions": [
+      {
+        "text": "red minivan",
+        "is_correct": false,
+        "clip_score": 0.235233,
+        "clip_rank": 1
+      },
+      {
+        "text": "golden van",
+        "is_correct": false,
+        "clip_score": 0.219719,
+        "clip_rank": 2
+      },
+      {
+        "text": "gray van",
+        "is_correct": false,
+        "clip_score": 0.214723,
+        "clip_rank": 3
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.208828,
+        "clip_rank": 4
+      },
+      {
+        "text": "white polic car",
+        "is_correct": false,
+        "clip_score": 0.199461,
+        "clip_rank": 5
+      },
+      {
+        "text": "gray pickup truck",
+        "is_correct": false,
+        "clip_score": 0.180955,
+        "clip_rank": 6
+      },
+      {
+        "text": "red sedan",
+        "is_correct": false,
+        "clip_score": 0.176874,
+        "clip_rank": 7
+      },
+      {
+        "text": "blue truck",
+        "is_correct": false,
+        "clip_score": 0.17426,
+        "clip_rank": 8
+      },
+      {
+        "text": "greenish white sedan",
+        "is_correct": false,
+        "clip_score": 0.140907,
+        "clip_rank": 9
+      },
+      {
+        "text": "white pickup truck with red accents",
+        "is_correct": false,
+        "clip_score": 0.126029,
+        "clip_rank": 10
+      },
+      {
+        "text": "green pickup with red accents",
+        "is_correct": false,
+        "clip_score": 0.115055,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0359_c011_00036175_0.jpg",
+    "descriptions": [
+      {
+        "text": "gray sedan",
+        "is_correct": false,
+        "clip_score": 0.189146,
+        "clip_rank": 1
+      },
+      {
+        "text": "black sedan with silver grill",
+        "is_correct": false,
+        "clip_score": 0.181123,
+        "clip_rank": 2
+      },
+      {
+        "text": "white box truck",
+        "is_correct": false,
+        "clip_score": 0.170676,
+        "clip_rank": 3
+      },
+      {
+        "text": "black sedan",
+        "is_correct": false,
+        "clip_score": 0.167192,
+        "clip_rank": 4
+      },
+      {
+        "text": "commercial white truck",
+        "is_correct": false,
+        "clip_score": 0.158275,
+        "clip_rank": 5
+      },
+      {
+        "text": "white pickup",
+        "is_correct": false,
+        "clip_score": 0.154654,
+        "clip_rank": 6
+      },
+      {
+        "text": "gray truck",
+        "is_correct": false,
+        "clip_score": 0.146849,
+        "clip_rank": 7
+      },
+      {
+        "text": "black mitsubishi sedan",
+        "is_correct": false,
+        "clip_score": 0.145749,
+        "clip_rank": 8
+      },
+      {
+        "text": "gray van with silver grill",
+        "is_correct": false,
+        "clip_score": 0.142924,
+        "clip_rank": 9
+      },
+      {
+        "text": "red hatchback volkswagen",
+        "is_correct": false,
+        "clip_score": 0.141953,
+        "clip_rank": 10
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.122653,
+        "clip_rank": 11
+      }
+    ]
+  },
+  {
+    "image_name": "0224_c014_00063300_0.jpg",
+    "descriptions": [
+      {
+        "text": "gray sedan",
+        "is_correct": false,
+        "clip_score": 0.194083,
+        "clip_rank": 1
+      },
+      {
+        "text": "white sedan with blue license plate",
+        "is_correct": false,
+        "clip_score": 0.181112,
+        "clip_rank": 2
+      },
+      {
+        "text": "white audi sedan",
+        "is_correct": false,
+        "clip_score": 0.170639,
+        "clip_rank": 3
+      },
+      {
+        "text": "golden sedan",
+        "is_correct": false,
+        "clip_score": 0.168581,
+        "clip_rank": 4
+      },
+      {
+        "text": "gray truck",
+        "is_correct": false,
+        "clip_score": 0.151829,
+        "clip_rank": 5
+      },
+      {
+        "text": "commercial white truck",
+        "is_correct": false,
+        "clip_score": 0.1388,
+        "clip_rank": 6
+      },
+      {
+        "text": "silver gray commercial truck",
+        "is_correct": false,
+        "clip_score": 0.137706,
+        "clip_rank": 7
+      },
+      {
+        "text": "black van",
+        "is_correct": false,
+        "clip_score": 0.134099,
+        "clip_rank": 8
+      },
+      {
+        "text": "green passenger bus",
+        "is_correct": false,
+        "clip_score": 0.12417,
+        "clip_rank": 9
+      },
+      {
+        "text": "white pickup",
+        "is_correct": false,
+        "clip_score": 0.117675,
+        "clip_rank": 10
+      },
+      {
+        "text": "blue bus",
+        "is_correct": false,
+        "clip_score": 0.11375,
+        "clip_rank": 11
+      }
+    ]
+  }
+]

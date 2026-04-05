@@ -49,14 +49,16 @@ def init_db():
     );
 
     CREATE TABLE IF NOT EXISTS sessions (
-        id              TEXT PRIMARY KEY,
-        mturk_worker_id TEXT,
-        condition       TEXT NOT NULL DEFAULT 'ai',   -- 'ai' | 'control'
-        started_at      TEXT DEFAULT (datetime('now')),
-        completed_at    TEXT,
-        feedback_text   TEXT,
-        ai_helped       TEXT,
-        ai_comments     TEXT
+        id                  TEXT PRIMARY KEY,
+        mturk_worker_id     TEXT,
+        condition           TEXT NOT NULL DEFAULT 'ai',   -- 'ai' | 'control'
+        started_at          TEXT DEFAULT (datetime('now')),
+        completed_at        TEXT,
+        feedback_text       TEXT,
+        ai_helped           TEXT,
+        ai_comments         TEXT,
+        confidence_rating   INTEGER,   -- 1-7 Likert: confidence in classifications
+        mental_effort       INTEGER    -- 1-7 Likert: mental effort invested
     );
 
     CREATE TABLE IF NOT EXISTS task_responses (
@@ -81,12 +83,19 @@ def init_db():
     """)
     conn.commit()
     # ── Migrations (safe to run on existing DBs) ──────────────────────────────
-    # Add condition column if upgrading from a version that didn't have it
     cols = [row[1] for row in conn.execute("PRAGMA table_info(sessions)").fetchall()]
     if "condition" not in cols:
         conn.execute("ALTER TABLE sessions ADD COLUMN condition TEXT NOT NULL DEFAULT 'ai'")
         conn.commit()
         print("Migrated: added sessions.condition column")
+    if "confidence_rating" not in cols:
+        conn.execute("ALTER TABLE sessions ADD COLUMN confidence_rating INTEGER")
+        conn.commit()
+        print("Migrated: added sessions.confidence_rating column")
+    if "mental_effort" not in cols:
+        conn.execute("ALTER TABLE sessions ADD COLUMN mental_effort INTEGER")
+        conn.commit()
+        print("Migrated: added sessions.mental_effort column")
 
     conn.close()
     print(f"DB at {DB_PATH}")
